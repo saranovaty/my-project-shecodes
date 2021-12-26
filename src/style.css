@@ -95,3 +95,9 @@
   left: 20px;
   top: 1px;
 }
+
+.creator {
+  font-size: 15px;
+  position: relative;
+  left: 0px;
+}
