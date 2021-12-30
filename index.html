@@ -21,76 +21,102 @@
   </head>
   <body>
     <div class="container">
-      <div class="row">
-        <div class="col-6">
-          <div class="card">
-            <div class="card-body">
-              <div class="row lista">
-                <div class="col-2">Paris</div>
-                <div class="col-2 londra">London</div>
-                <div class="col-2">Milan</div>
-                <div class="col-2">Berlin</div>
-              </div>
-              <br />
-              <form id="search-form">
+      <div class="card">
+        <div class="card-body">
+          <br />
+          <form class="search" id="search-form">
+            <div class="row">
+              <div class="col-6">
                 <input
                   id="citta-nuova"
+                  class="form-control"
                   type="text"
-                  placeholder="Enter your city"
+                  placeholder="Enter your city..."
+                  autocomplete="off"
                 />
+              </div>
+              <div class="col-3">
                 <button type="submit" class="btn btn-warning cerca">
                   Search
                 </button>
+              </div>
+              <div class="col-3">
                 <input
                   type="button"
-                  class="current"
+                  class="btn btn-warning current"
                   id="current-location"
                   value="Current"
                 />
-              </form>
-              <br />
-              <div class="row">
-                <div class="col-4"><i class="fas fa-cloud nuvola"></i></div>
-                <div class="col-4">
-                  <div id="temperature" class="capital">
-                    <span class="temperature"> 10</span
-                    ><span class="celsius">°C</span>
-                  </div>
-                  <small> Precipitation: 70% <br />Wind: 1km/h </small>
-                </div>
-                <div class="col-4">
-                  <div id="actual-city" class="capital">Vienna</div>
-                  <span id="giorno">Sunday</span> <br />
-                  <span id="ora">11:00 a.m.</span>
-                </div>
-              </div>
-              <br />
-              <br />
-              <div class="row giorni">
-                <div class="col-2">Mon</div>
-                <div class="col-2">Tue</div>
-                <div class="col-2">Wed</div>
-                <div class="col-2">Thu</div>
-                <div class="col-2">Fri</div>
-              </div>
-              <div class="row giorni">
-                <div class="col-2"><i class="fas fa-cloud"></i></div>
-                <div class="col-2"><i class="fas fa-cloud"></i></div>
-                <div class="col-2"><i class="fas fa-sun"></i></div>
-                <div class="col-2"><i class="fas fa-cloud-sun"></i></div>
-                <div class="col-2"><i class="fas fa-sun"></i></div>
-              </div>
-              <div class="row giorni">
-                <div class="col-2">7°C</div>
-                <div class="col-2">7°C</div>
-                <div class="col-2">4°C</div>
-                <div class="col-2">2°C</div>
-                <div class="col-2">4°C</div>
               </div>
             </div>
+          </form>
+          <br />
+          <div id="actual-city" class="capital">Vienna</div>
+          <div class="day">
+            <span id="giorno">Sunday</span>,
+            <span id="ora">11:00 a.m.</span>
+          </div>
+          <div class="condition" id="description">Clear sky</div>
+          <div class="row">
+            <div class="col-4">
+              <img
+                src="http://openweathermap.org/img/wn/10d@2x.png"
+                alt="Clear"
+                id="icon"
+                class="nuvola"
+                style="width: 120px; height: 120px"
+              />
+            </div>
+            <div class="col-4">
+              <div class="capital">
+                <strong class="temperature" id="temperature"></strong>
+                <span class="celsius">
+                  <a href="#" id="celsius-link" class="active">°C</a> |
+                  <a href="#" id="fahrenheit-link" class="active">°F</a>
+                </span>
+              </div>
+            </div>
+            <br />
+            <div class="col-4">
+              <br />
+              <small class="info">
+                <strong>Humidity</strong>:<span id="humidity"> </span>%
+                <br />
+              </small>
+              <small class="info"
+                ><strong>Wind</strong>:<span id="wind"> </span>km/h</small
+              >
+            </div>
+          </div>
+          <br />
+          <br />
+          <div class="row giorni">
+            <div class="col-2">Mon</div>
+            <div class="col-2">Tue</div>
+            <div class="col-2">Wed</div>
+            <div class="col-2">Thu</div>
+            <div class="col-2">Fri</div>
+            <div class="col-2">Sat</div>
+          </div>
+          <div class="row giorni">
+            <div class="col-2"><i class="fas fa-cloud"></i></div>
+            <div class="col-2"><i class="fas fa-cloud"></i></div>
+            <div class="col-2"><i class="fas fa-sun"></i></div>
+            <div class="col-2"><i class="fas fa-cloud-sun"></i></div>
+            <div class="col-2"><i class="fas fa-sun"></i></div>
+            <div class="col-2"><i class="fas fa-sun"></i></div>
+          </div>
+          <div class="row giorni">
+            <div class="col-2">7°C</div>
+            <div class="col-2">7°C</div>
+            <div class="col-2">4°C</div>
+            <div class="col-2">2°C</div>
+            <div class="col-2">4°C</div>
+            <div class="col-2">5°C</div>
           </div>
         </div>
       </div>
+
       <br />
       <small class="creator">
         <a
