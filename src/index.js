@@ -28,10 +28,24 @@ currentHour.innerHTML = `${hour}:${minute}`;
 
 function showTemperature(response) {
   let temperature = Math.round(response.data.main.temp);
-  let tempCelsius = document.querySelector(".temperature");
+  let tempCelsius = document.querySelector("#temperature");
   tempCelsius.innerHTML = temperature;
   let currentCity = document.querySelector("#actual-city");
   currentCity.innerHTML = response.data.name;
+  let currentHumidity = document.querySelector("#humidity");
+  currentHumidity.innerHTML = ` ${response.data.main.humidity}`;
+  let currentWind = document.querySelector("#wind");
+  currentWind.innerHTML = ` ${Math.round(response.data.wind.speed)} `;
+  let descriptionElement = document.querySelector("#description");
+  descriptionElement.innerHTML = response.data.weather[0].description;
+  let iconElement = document.querySelector("#icon");
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  iconElement.setAttribute("alt", response.data.weather[0].description);
+
+  celsiusTemperature = response.data.main.temp;
 }
 
 function changeCity(event) {
@@ -65,3 +79,24 @@ function getCurrentLocation() {
 
 let button = document.querySelector("#current-location");
 button.addEventListener("click", getCurrentLocation);
+
+function displayFahrenheitTemperature(event) {
+  event.preventDefault();
+  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+  let tempCelsius = document.querySelector("#temperature");
+  tempCelsius.innerHTML = Math.round(fahrenheitTemperature);
+}
+
+function displayCelsiusTemperature(event) {
+  event.preventDefault();
+  let tempCelsius = document.querySelector("#temperature");
+  tempCelsius.innerHTML = Math.round(celsiusTemperature);
+}
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
+
+let celsiusTemperature = null;
+
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", displayCelsiusTemperature);
