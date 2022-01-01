@@ -101,28 +101,22 @@ function showTemperature(response) {
   getForecast(response.data.coord);
 }
 
-function changeCity(event) {
+function handleSubmit(event) {
   event.preventDefault();
   let inputCity = document.querySelector("#citta-nuova");
-  let currentCity = document.querySelector("#actual-city");
-  currentCity.innerHTML = inputCity.value;
-  let units = "metric";
-  let apiKey = "41bc8aa28e75257d10555fa1b7bee77d";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${inputCity.value}&units=${units}&appid=${apiKey}`;
-
-  axios.get(apiUrl).then(showTemperature);
+  search(inputCity.value);
 }
 
 function search(cityName) {
   let apiKey = "41bc8aa28e75257d10555fa1b7bee77d";
-  let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=imperial`;
+  let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=metric`;
   console.log(apiURL);
   axios.get(apiURL).then(showTemperature);
 }
 search("Vienna");
 
 let form = document.querySelector("#search-form");
-form.addEventListener("submit", changeCity);
+form.addEventListener("submit", handleSubmit);
 
 function showPosition(position) {
   let lat = position.coords.latitude;
