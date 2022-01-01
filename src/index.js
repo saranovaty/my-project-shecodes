@@ -113,6 +113,14 @@ function changeCity(event) {
   axios.get(apiUrl).then(showTemperature);
 }
 
+function search(cityName) {
+  let apiKey = "41bc8aa28e75257d10555fa1b7bee77d";
+  let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=imperial`;
+  console.log(apiURL);
+  axios.get(apiURL).then(showTemperature);
+}
+search("Vienna");
+
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", changeCity);
 
